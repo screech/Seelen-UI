@@ -377,8 +377,8 @@ pub fn register_win_hook() -> Result<()> {
         }
     })?;
 
-    let (sender, receiver) = std::sync::mpsc::channel::<VirtualDesktopEvent>();
-    get_vd_manager().listen_events(sender)?;
+    let (_sender, receiver) = std::sync::mpsc::channel::<VirtualDesktopEvent>();
+//    get_vd_manager().listen_events(sender)?;
     spawn_named_thread("VirtualDesktopEventHook", move || {
         for event in receiver {
             log_error!(process_vd_event(event))

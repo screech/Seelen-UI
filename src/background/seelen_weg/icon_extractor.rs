@@ -14,9 +14,12 @@ use windows::Win32::{
     },
 };
 
+/*
 use std::arch::x86_64::{
     __m128i, _mm_loadu_si128, _mm_setr_epi8, _mm_shuffle_epi8, _mm_storeu_si128,
 };
+*/
+
 use std::ffi::OsStr;
 use std::io::BufRead;
 use std::os::windows::ffi::OsStrExt;
@@ -31,7 +34,8 @@ use crate::windows_api::WindowsApi;
 /// Convert BGRA to RGBA
 ///
 /// Uses SIMD to go fast
-pub fn bgra_to_rgba(data: &mut [u8]) {
+pub fn bgra_to_rgba(_data: &mut [u8]) {
+/*
     // The shuffle mask for converting BGRA -> RGBA
     let mask: __m128i = unsafe {
         _mm_setr_epi8(
@@ -47,6 +51,7 @@ pub fn bgra_to_rgba(data: &mut [u8]) {
         vector = unsafe { _mm_shuffle_epi8(vector, mask) };
         unsafe { _mm_storeu_si128(chunk.as_mut_ptr() as *mut __m128i, vector) };
     }
+*/
 }
 
 pub fn convert_hicon_to_rgba_image(hicon: &HICON) -> Result<RgbaImage> {

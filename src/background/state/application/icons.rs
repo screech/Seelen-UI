@@ -36,6 +36,7 @@ impl FullState {
                 }
             }
         }
+        */
 
         // add default icon pack if not exists
         if trace_lock!(self.icon_packs).get("system").is_none() {
