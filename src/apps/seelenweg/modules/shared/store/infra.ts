@@ -55,7 +55,7 @@ export async function registerStoreEvents() {
 
   await Settings.onChange(loadSettingsToStore);
 
-  await WegItems.forCurrentWidgetChange(loadWegItemsToStore);
+  await WegItems.onChange(loadWegItemsToStore);
 
   await UIColors.onChange(loadColorsToStore);
 
@@ -115,6 +115,6 @@ function loadWegItemsToStore(items: WegItems) {
 
 export async function loadStore() {
   loadSettingsToStore(await Settings.getAsync());
-  loadWegItemsToStore(await WegItems.forCurrentWidget());
+  loadWegItemsToStore(await WegItems.getAsync());
   loadColorsToStore(await UIColors.getAsync());
 }

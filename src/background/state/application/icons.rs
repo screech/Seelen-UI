@@ -10,6 +10,7 @@ use crate::{error_handler::Result, trace_lock, utils::constants::SEELEN_COMMON};
 use super::FullState;
 
 impl FullState {
+    /*
     fn load_icon_pack_from_dir(dir_path: &Path) -> Result<IconPack> {
         let file = dir_path.join("metadata.yml");
         if !file.exists() {
@@ -17,11 +18,13 @@ impl FullState {
         }
         Ok(serde_yaml::from_str(&std::fs::read_to_string(&file)?)?)
     }
+    */
 
     pub(super) fn load_icons_packs(&mut self) -> Result<()> {
         let entries = std::fs::read_dir(SEELEN_COMMON.icons_path())?;
         for entry in entries.flatten() {
-            let path = entry.path();
+            let _path = entry.path();
+            /*
             if path.is_dir() {
                 let icon_pack = Self::load_icon_pack_from_dir(&path);
                 match icon_pack {
@@ -35,8 +38,8 @@ impl FullState {
                     }
                 }
             }
+            */
         }
-        */
 
         // add default icon pack if not exists
         if trace_lock!(self.icon_packs).get("system").is_none() {
